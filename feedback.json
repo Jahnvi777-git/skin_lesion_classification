@@ -1,0 +1,282 @@
+[
+    {
+        "feedback": "correct",
+        "file_name": "ISIC_0031932.jpg",
+        "correct_class": null,
+        "result": [
+            [
+                "Melanocytic Nevus",
+                97.84
+            ],
+            [
+                "Melanoma",
+                1.21
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0.87
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0.07
+            ],
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                0.01
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0
+            ]
+        ]
+    },
+    {
+        "feedback": "correct",
+        "file_name": "ISIC_0031932.jpg",
+        "correct_class": null,
+        "result": [
+            [
+                "Melanocytic Nevus",
+                97.84
+            ],
+            [
+                "Melanoma",
+                1.21
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0.87
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0.07
+            ],
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                0.01
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0
+            ]
+        ]
+    },
+    {
+        "feedback": "incorrect",
+        "file_name": "ISIC_0031932.jpg",
+        "correct_class": "Dermatofibroma",
+        "result": [
+            [
+                "Melanocytic Nevus",
+                97.84
+            ],
+            [
+                "Melanoma",
+                1.21
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0.87
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0.07
+            ],
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                0.01
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0
+            ]
+        ]
+    },
+    {
+        "feedback": "incorrect",
+        "file_name": "ISIC_0029133.jpg",
+        "correct_class": "Melanoma",
+        "result": [
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                99.97
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0.01
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0.01
+            ],
+            [
+                "Melanoma",
+                0.01
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ],
+            [
+                "Melanocytic Nevus",
+                0
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0
+            ]
+        ]
+    },
+    {
+        "feedback": "incorrect",
+        "file_name": "ISIC_0029133.jpg",
+        "correct_class": "Melanocytic Nevus",
+        "result": [
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                99.97
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0.01
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0.01
+            ],
+            [
+                "Melanoma",
+                0.01
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ],
+            [
+                "Melanocytic Nevus",
+                0
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0
+            ]
+        ]
+    },
+    {
+        "feedback": "incorrect",
+        "file_name": "ISIC_0029133.jpg",
+        "correct_class": "Melanoma",
+        "result": [
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                99.97
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0.01
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0.01
+            ],
+            [
+                "Melanoma",
+                0.01
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ],
+            [
+                "Melanocytic Nevus",
+                0
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0
+            ]
+        ]
+    },
+    {
+        "feedback": "incorrect",
+        "file_name": "ISIC_0029133.jpg",
+        "correct_class": "Melanoma",
+        "result": [
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                99.95
+            ],
+            [
+                "Melanoma",
+                0.03
+            ],
+            [
+                "Melanocytic Nevus",
+                0.01
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0
+            ]
+        ]
+    },
+    {
+        "feedback": "incorrect",
+        "file_name": "ISIC_0027130.jpg",
+        "correct_class": "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+        "result": [
+            [
+                "Melanoma",
+                99.31
+            ],
+            [
+                "Melanocytic Nevus",
+                0.61
+            ],
+            [
+                "Benign Keratosis (solar lentigines / seborrheic keratoses / lichen planus-like keratoses)",
+                0.06
+            ],
+            [
+                "Actinic Keratosis and Intraepithelial Carcinoma (Bowen's disease)",
+                0.01
+            ],
+            [
+                "Basal Cell Carcinoma",
+                0.01
+            ],
+            [
+                "Vascular Lesions (angiomas, angiokeratomas, pyogenic granulomas, and hemorrhage)",
+                0.01
+            ],
+            [
+                "Dermatofibroma",
+                0
+            ]
+        ]
+    }
+]

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>SkinlesionClassification</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/bootstrap.min.css') }}">
+   <!-- style css -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/style.css') }}">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/responsive.css') }}">
+   <!-- fevicon -->
+   <!-- Favicon -->
+   <link rel="icon" href="{{ url_for('static', filename='css/images/fevicon.png') }}" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/jquery.mCustomScrollbar.min.css') }}">
+   <!-- FontAwesome -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/font-awesome.css') }}">
+   <!-- Owl Carousel stylesheets -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/owl.carousel.min.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/owl.theme.default.min.css') }}">
+   <!-- FancyBox -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/css/jquery.fancybox.min.css') }}" media="screen">
+
+</head>
+
+<body>
+   <!-- header section start -->
+   <div class="header_section">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='css/images/logo.png') }}" alt="Logo"></a>
+         </div>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                  <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('predict') }}">Health</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('predict') }}">Medicine</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('predict') }}">News</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('predict') }}">Client</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('predict') }}">Contact Us</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="#"><img src="{{ url_for('static', filename='css/images/search-icon.png') }}" alt="Search Icon"></a>
+               </li>
+            </ul>
+         </div>
+      </nav>
+   </div>
+   
+      <!-- header section end -->
+      <!-- banner section start -->
+      <div id="main_slider" class="carousel" data-ride="carousel">
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <div class="banner_section">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <h1 class="banner_taital">Skin Lesion classification <br><span style="color: #151515;">Driven by XAI</span></h1>
+                           <p class="banner_text">A twist on traditional classification by adding a factor of trust<br> <b>Get your diagnosis now!</b><br>Who's using?</p>
+                           <div class="btn_main">
+                              <!-- "Doctor" Button -->
+                              <div class="more_bt">
+                                 <form method="POST" action="{{ url_for('predict_choice') }}">
+                                    <input type="hidden" name="prediction_type" value="doctor">
+                                    <button type="submit" style="background-color: #1a67cb; color: white; padding: 10px 20px;" class="more_bt">Doctor</button>
+                                 </form>
+                              </div>
+                           
+                              <!-- "Patient" Button -->
+                              <div class="contact_bt">
+                                 <form method="POST" action="{{ url_for('predict_choice') }}">
+                                    <input type="hidden" name="prediction_type" value="patient">
+                                    <button type="submit" style="background-color: #1a67cb; color: white; padding: 10px 20px;" class="contact_bt">Patient</button>
+                                 </form>
+                              </div>
+                           </div>
+                           
+                        </div>
+                        <div class="col-md-6">
+                           <div class="image_1">
+                              <img src="{{ url_for('static', filename='css/images/img-1.png') }}" alt="Banner Image">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      
+            
+         </div>
+      
+         
+      </div>
+      
+   <!-- banner section end -->
+   <!-- health section start -->
+   <div class="health_section layout_padding">
+      <div class="container">
+         <h1 class="health_taital">About</h1>
+         <p class="health_text">In our project on skin lesion classification, we used Gradient-weighted Class Activation Mapping (Grad-CAM) to improve the interpretability of our machine learning model. Grad-CAM allows us to visualize which areas of an image contribute most to a model's decision, providing a heatmap that highlights the key features driving the classification process. This visualization helps build trust among healthcare professionals and patients alike, as it offers a clear and intuitive explanation of the model's decision-making. By using this approach, we aim to foster confidence in our technology and ensure transparency in our skin lesion diagnosis tool, ultimately contributing to better patient outcomes.</p>
+         <br><p class="health_text">We used a pretrained model, Mobilenet, for it's various benefits, and made it our own by adding new layers to it along with training it using class weights which changed every 30 epochs. The change was dependent on the accuracies of each class, it was done so as to reduce the imbalance in the category wise accuracies therefore not letting a class overpower the others during training.</p><br>
+         <h1 class="health_taital">Motivation</h1><br><br>
+         <p class="health_text"> We were motivated to develop a skin lesion classification project using Grad-CAM to address the critical need for early and accurate skin cancer detection. By enhancing model interpretability, we aimed to increase trust and confidence in AI-assisted diagnosis among healthcare providers and patients.</p>
+      </div>
+   </div>
+   <!-- health section end -->
+   <!-- knowledge section end -->
+  
+   <!-- knowledge section end -->
+   <!-- news section start -->
+   <div class="news_section layout_padding" style="background-color: #e0f7fa; margin-bottom: 40px;">
+      <div class="container">
+        <h1 class="health_taital">Our results</h1>
+        <p class="health_text">We trained a modified mobilenet model by adding a few of our own layers, upon HAM10000 dataset to achieve the following.</p>
+        <div class="news_section_2 layout_padding">
+          <div class="row">
+            <div class="col-lg-4 col-sm-6">
+              <div class="box_main">
+                <div class="icon_1">
+                  <img src="{{ url_for('static', filename='css/images/graph1.png') }}" alt="Daily Care Experts">
+                </div>
+                <h4 class="daily_text">Graph for loss</h4>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="box_main active">
+                <div class="icon_1">
+                  <img 
+                    src="{{ url_for('static', filename='css/images/cat_acc.png') }}" 
+                    alt="Available 24/7" 
+                    style="width: 500px; height: 230px;"
+                  >
+                </div>
+                <h4 class="daily_text_1">Categorical Accuracy</h4>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+              <div class="box_main">
+                <div class="icon_1">
+                  <img 
+                    src="{{ url_for('static', filename='css/images/top2.png') }}" 
+                    alt="Balanced Care" 
+                    style="width: 400px; height: 220px;"
+                  >
+                </div>
+                <h4 class="daily_text_1">Top2 accuracy</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="news_section_2 layout_padding">
+         <div class="row">
+           <div class="col-lg-4 col-sm-6">
+             <div class="box_main">
+               <div class="icon_1">
+                 <img src="{{ url_for('static', filename='css/images/top3.png') }}" alt="Daily Care Experts">
+               </div>
+               <h4 class="daily_text">Top3 Accuracy</h4>
+             </div>
+           </div>
+           <div class="col-lg-4 col-sm-6">
+             <div class="box_main active">
+               <div class="icon_1">
+                 <img 
+                   src="{{ url_for('static', filename='css/images/cm.png') }}" 
+                   alt="Available 24/7" 
+                   style="width: 500px; height: 230px;"
+                 >
+               </div>
+               <h4 class="daily_text_1">Confusion Matrix</h4>
+             </div>
+           </div>
+           <div class="col-lg-4 col-sm-6">
+             <div class="box_main">
+               <div class="icon_1">
+                 <img 
+                   src="{{ url_for('static', filename='css/images/mm_5_report.png') }}" 
+                   alt="Balanced Care" 
+                   style="width: 400px; height: 220px;"
+                 >
+               </div>
+               <h4 class="daily_text_1">Classification report</h4>
+             </div>
+           </div>
+         </div>
+       </div>
+      </div>
+    </div>
+    
+   <!-- news section end -->
+   
+   <!-- footer section start -->
+   <!-- footer section start -->
+<div class="footer_section layout_padding" style="background-color: #333; color: white;">
+   <div class="container">
+     <div class="d-flex justify-content-between">
+       <div class="col-lg-3 col-sm-6">
+         <h1 class="adderss_text">The Team</h1>
+         <p>20WH1A6605 - G. Spurthy Vahini</p>
+         <p>20WH1A6603 - B.S.S Durga Tanmayee</p>
+         <p>20WH1A6624 - M. Devi Sri Chandana</p>
+         <p>21WH5A6605 - M. Ashwini</p>
+         <p>20WH1A6604 - P. Abheesta</p>
+       </div>
+       <div class="col-lg-3 col-sm-6">
+         <h1 class="adderss_text">Under the guidance of</h1>
+         <div class="hiphop_text_1">B. Kishore Kumar<br> Assistant Professor, CSE - AI&ML</div>
+       </div>
+       <div class="col-lg-3 col-sm-6">
+         <h1 class="adderss_text">Useful Links</h1>
+         <div class="Useful_text">
+           <a href="https://www.aad.org/public/diseases/skin-cancer" style="color: white; text-decoration: none;">Skin Cancer</a><br>
+           <a href="https://www.cancer.gov/types/skin" style="color: white; text-decoration: none;">NCI - Skin Cancer</a><br>
+           <a href="https://www.webmd.com/skin-problems-and-treatments/guide/skin-problems-and-treatments" style="color: white; text-decoration: none;">WebMD - Skin Problems</a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- footer section end -->
+
+   
+   <!-- copyright section end -->
+   <!-- Javascript files-->
+   <script src="js/jquery.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/jquery-3.0.0.min.js"></script>
+   <script src="js/plugin.js"></script>
+   <!-- sidebar -->
+   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="js/custom.js"></script>
+   <!-- javascript -->
+   <script src="js/owl.carousel.js"></script>
+   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+\chapter{Sample Code}\label{app1}
+
+
+\begin{lstlisting}
+def calculate_area(shape, dimensions):
+  """
+  This function calculates the area of a shape based on its type and dimensions.
+
+  Args:
+      shape (str): The type of shape (e.g., "rectangle", "circle").
+      dimensions (list): A list containing the shape's dimensions.
+
+  Returns:
+      float: The calculated area of the shape.
+  """
+  if shape == "rectangle":
+    length, width = dimensions
+    return length * width
+  elif shape == "circle":
+    radius = dimensions[0]
+    return 3.14159 * radius ** 2
+  else:
+    print(f"Error: Unsupported shape '{shape}'.")
+    return None
+
+def analyze_text(text):
+  """
+  This function analyzes a text string and returns some basic statistics.
+
+  Args:
+      text (str): The text string to be analyzed.
+
+  Returns:
+      dict: A dictionary containing the number of words, characters, and uppercase letters.
+  """
+  words = len(text.split())
+  chars = len(text)
+  uppercase = sum(1 for char in text if char.isupper())
+  return {"words": words, "characters": chars, "uppercase": uppercase}
+
+def create_shopping_list(items, quantities=None):
+  """
+  This function creates a shopping list with items and optional quantities.
+
+  Args:
+      items (list): A list of items to include in the shopping list.
+      quantities (list, optional): A list of corresponding quantities for each item. 
+
+  Returns:
+      str: The formatted shopping list string.
+  """
+  shopping_list = ""
+  if quantities:
+    for item, quantity in zip(items, quantities):
+      shopping_list += f"- {quantity} {item}\n"
+  else:
+    for item in items:
+      shopping_list += f"- {item}\n"
+  return shopping_list.rstrip()
+
+# Example usage
+shapes = [("rectangle", [5, 3]), ("circle", [4])]
+for shape, dimensions in shapes:
+  area = calculate_area(shape, dimensions)
+  if area:
+    print(f"The area of the {shape} is: {area:.2f}")
+
+text_data = analyze_text("This is a sample text string for analysis.")
+print(f"The text contains: {text_data['words']} words, {text_data['characters']} characters, and {text_data['uppercase']} uppercase letters.")
+
+shopping_items = ["Milk", "Bread", "Eggs", "Apples"]
+shopping_list = create_shopping_list(shopping_items)
+print("\nShopping List:")
+print(shopping_list)
+\end{lstlisting}

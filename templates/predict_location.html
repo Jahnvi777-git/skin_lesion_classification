@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Skin Cancer Detector</title>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        Skin Cancer Detector
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    
+    <div class="nav-links">
+      <a href="/" >Home</a>
+      <a href="#" target="_blank">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Uploaded image and Grad-Cam Heatmap -->
+  <div class="float-container">
+    <div class="float-child">
+      <h2>Uploaded Image</h2>
+      <div><img src="{{ url_for('upload_img', filename=file_name) }}"></div>
+    </div>
+    <div class="float-child">
+      <h2>Grad-Cam Heatmap</h2>
+      <div><img src="{{ url_for('upload_img', filename=heatmap_file) }}"></div>
+    </div>
+  </div>
+
+  <!-- Prediction results table and feedback -->
+  <div class="float-table">
+    <h2>Feedback</h2>
+    <form>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Confidence</th>
+        </tr>
+        {% for i, j in result %}
+          <tr>
+            <td>{{ i.title() }}</td>
+            <td>{{ j }}%</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </form>
+  </div>
+
+  <div class="float-table" style="height: 200px;">
+    <!-- Single feedback select box -->
+    <label for="feedback">Was the prediction correct?</label>
+    <select id="feedback" name="feedback">
+      <option value="correct">Correct</option>
+      <option value="incorrect">Incorrect</option>
+    </select>
+
+    <!-- Correct class selection (only shown if incorrect is selected) -->
+    <div id="correct-class-selector" style="display:none;">
+      <label for="correct-class">Select the correct class:</label>
+      <select id="correct-class" name="correct_class">
+        {% for key, value in class_dict.items() %}
+          <option value="{{ value }}">{{ value }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+  </div>
+
+  <!-- Display nearest doctors -->
+  <div>
+    <h2>Nearest Doctors</h2>
+    <button type="button" onclick="getLocation()">Find Nearest Doctors</button>
+    <ul id="doctor-list"></ul>
+  </div>
+
+  <!-- JavaScript for feedback and fetching nearest doctors -->
+  <script>
+function submitFeedback() {
+  const feedback = document.getElementById("feedback").value;
+  const correctClassSelector = document.getElementById("correct-class-selector");
+  let correctClass = null;
+
+  if (feedback === "incorrect") {
+    correctClass = document.getElementById("correct-class").value;
+  }
+
+  const feedbackData = {
+    feedback: feedback,
+    file_name: "{{ file_name }}",
+    correct_class: correctClass,
+    result: {{ result|tojson }}
+  };
+
+  fetch('/feedback', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(feedbackData)
+  })
+  .then(response => {
+    if (response.ok) {
+      alert('Feedback submitted successfully');
+    } else {
+      console.error('Error submitting feedback');
+    }
+  })
+  .catch(error => console.error('An error occurred:', error));
+}
+
+document.getElementById("feedback").addEventListener("change", function() {
+  const feedback = this.value;
+  const correctClassSelector = document.getElementById("correct-class-selector");
+  
+  if (feedback === "incorrect") {
+    correctClassSelector.style.display = "block";
+  } else {
+    correct-class-selector.style.display = "none";
+  }
+});
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        fetchNearestDoctors(latitude, longitude);
+      },
+      error => {
+        console.error("Error getting location:", error);
+      }
+    );
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+}
+
+function fetchNearestDoctors(latitude, longitude) {
+  const location = { latitude, longitude };
+
+  fetch('/find_doctor', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ location })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Nearby doctors:', data);
+    const doctorList = document.getElementById('doctor-list');
+    doctorList.innerHTML = '';
+    data.forEach(doctor => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `Doctor: ${doctor.name}, Address: ${doctor.address}`;
+      doctorList.appendChild(listItem);
+    });
+  })
+  .catch(error => console.error('Error fetching nearest doctors:', error));
+}
+  </script>
+</body>
+</html>
